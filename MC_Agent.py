@@ -67,6 +67,6 @@ class MC_Agent:
         return final + (start - final)* math.exp(-1*epoch/decay)
 
     def __call__(self, events= None, state=None):
-        return self.get_action(events, state)
+        return self.get_action(state)
 
     

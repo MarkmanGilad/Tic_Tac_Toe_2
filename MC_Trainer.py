@@ -4,7 +4,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from MC_Agent import MC_Agent
 
-PATH = 'Data/Q_3.pth'
+PATH = 'Data/Q_2.pth'
 
 env = TicTacToe(State())
 player1 = MC_Agent(1, env, graphics=None, Q_table_PATH=None)
@@ -14,7 +14,7 @@ gamma = 0.9
 
 def main ():
     player = player1    
-    epochs = 100000
+    epochs = 50000
     alpha = 0.1
     
     for epoch in range(epochs):
@@ -56,6 +56,7 @@ def test (num):
     player.train=False
     player.load_Q(PATH)
     for n in range(num):
+        player = player1
         state = State()
         while not env.end_of_game(state):
             action = player.get_action(state=state)
@@ -84,5 +85,5 @@ def switch_players(player):
         return player1
 
 if __name__ == '__main__':
-    # main()
-    print(test(100))
+    main()
+    # print(test(100))

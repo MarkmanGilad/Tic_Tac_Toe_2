@@ -12,8 +12,8 @@ pygame.init()
 clock = pygame.time.Clock()
 graphics = Graphics()
 env = TicTacToe(State())
-player1 = MC_Agent(1, env, graphics)
-# player1.load_Q(PATH)
+player1 = MC_Agent(1, env, graphics, train=False)
+player1.load_Q(PATH)
 # player1 = Random_Agent(1, env, graphics)
 # player2 = Random_Agent(-1, env,graphics)
 player2 = Human_Agent(-1,env, graphics)
@@ -27,7 +27,7 @@ def main ():
         for event in events:
             if event.type == pygame.QUIT:
                run = False
-        action = player(events)
+        action = player(events, env.state)
         if action:
             env.move(action)
             player = switch_players(player)
