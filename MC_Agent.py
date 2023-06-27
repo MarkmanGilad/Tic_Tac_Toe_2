@@ -50,8 +50,6 @@ class MC_Agent:
             action = random.choice(self.legal_actions(state))
         else:
             action = self.get_Q_action(state = state)
-        # next_state, reward = self.env.next_state(state, action)
-        # return action, reward, next_state
         return action
 
     def load_Q (self, PATH):

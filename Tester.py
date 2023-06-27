@@ -4,20 +4,19 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from MC_Agent import MC_Agent
 
-PATH = 'Data/Q10K.pth'
+PATH = 'Data/Q_6.pth'
 
 env = TicTacToe(State())
 player1 = MC_Agent(1, env, graphics=None, Q_table_PATH=PATH, train=False)
-# player1 = Random_Agent(-1, env,graphics=None)
+# player1 = Random_Agent(1, env,graphics=None)
 player2 = Random_Agent(-1, env,graphics=None)
-num = 5000
+num = 1000
 
 def main ():
 
     x_win = 0
     o_win = 0
     tie = 0
-    
         
     for n in range(num):
         state = State()

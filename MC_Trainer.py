@@ -4,7 +4,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from MC_Agent import MC_Agent
 
-PATH = 'Data/Q_2.pth'
+PATH = 'Data/Q_6.pth'
 
 env = TicTacToe(State())
 player1 = MC_Agent(1, env, graphics=None, Q_table_PATH=None)
@@ -14,7 +14,7 @@ gamma = 0.9
 
 def main ():
     player = player1    
-    epochs = 50000
+    epochs = 100000
     alpha = 0.1
     
     for epoch in range(epochs):
@@ -35,18 +35,24 @@ def main ():
     print(test(100))
 
 def Generate_episode (player, epoch):
-    episode = []
+    episods = []
     state = State()
     while not env.end_of_game(state):
-        action = player.get_action(state=state, epoch=epoch)
-        next_state, reward = env.next_state(state,action)
-        step = state, action, reward
-        episode.append(step)
-        state = next_state
-        player = switch_players(player)
+        action = player1.get_action(state=state, epoch=epoch)
+        state_a, reward = env.next_state(state,action)
+        if env.end_of_game(state_a):
+            step = state.copy(), action, reward
+            state = state_a
+        else:
+            action_env = player2.get_action(state=state_a)
+            next_state, reward = env.next_state(state_a, action_env)
+            step = state.copy(), action, reward
+            state = next_state
+        episods.append(step)
+               
 
-    episode.append((state,))
-    return episode
+    episods.append((state,))
+    return episods
 
 def test (num):
     x_win = 0

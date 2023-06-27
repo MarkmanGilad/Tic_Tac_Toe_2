@@ -6,7 +6,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from MC_Agent import MC_Agent
 
-PATH = 'Data/Q_3.pth'
+PATH = 'Data/Q_6.pth'
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -41,8 +41,6 @@ def main ():
                 
         graphics(env.state)
         clock.tick(FPS)
-
-    
     
 def switch_players(player):
     if player == player1:
