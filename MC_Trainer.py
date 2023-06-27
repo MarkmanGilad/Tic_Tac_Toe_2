@@ -38,7 +38,8 @@ def Generate_episode (player, epoch):
     episode = []
     state = State()
     while not env.end_of_game(state):
-        action, reward, next_state = player.get_state_action(state=state, epoch=epoch)
+        action = player.get_action(state=state, epoch=epoch)
+        next_state, reward = env.next_state(state,action)
         step = state, action, reward
         episode.append(step)
         state = next_state
@@ -57,7 +58,8 @@ def test (num):
     for n in range(num):
         state = State()
         while not env.end_of_game(state):
-            action, reward, state = player.get_state_action(state=state)
+            action = player.get_action(state=state)
+            state, _ = env.next_state(state,action)
             player = switch_players(player)
         if state.end_of_game == 1:
             x_win +=1

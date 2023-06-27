@@ -8,6 +8,7 @@ PATH = 'Data/Q_3.pth'
 
 env = TicTacToe(State())
 player1 = MC_Agent(1, env, graphics=None, Q_table_PATH=PATH, train=False)
+# player1 = Random_Agent(-1, env,graphics=None)
 player2 = Random_Agent(-1, env,graphics=None)
 num = 100
 
@@ -17,12 +18,12 @@ def main ():
     o_win = 0
     tie = 0
     player = player1
-    player.train=False
-    player.load_Q(PATH)
+        
     for n in range(num):
         state = State()
         while not env.end_of_game(state):
-            action, reward, state = player.get_state_action(state=state)
+            action = player.get_action(state=state)
+            state, _ = env.next_state(state,action)
             player = switch_players(player)
         if state.end_of_game == 1:
             x_win +=1

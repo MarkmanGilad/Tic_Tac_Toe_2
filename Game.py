@@ -6,15 +6,15 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from MC_Agent import MC_Agent
 
-PATH = 'Data/Q.pth'
+PATH = 'Data/Q_3.pth'
 
 pygame.init()
 clock = pygame.time.Clock()
 graphics = Graphics()
 env = TicTacToe(State())
-# player1 = MC_Agent(1, env, graphics)
+player1 = MC_Agent(1, env, graphics)
 # player1.load_Q(PATH)
-player1 = Random_Agent(1, env, graphics)
+# player1 = Random_Agent(1, env, graphics)
 # player2 = Random_Agent(-1, env,graphics)
 player2 = Human_Agent(-1,env, graphics)
 

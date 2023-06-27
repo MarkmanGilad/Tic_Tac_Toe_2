@@ -15,7 +15,7 @@ class MC_Agent:
             self.load_Q(Q_table_PATH)
         self.train = train
 
-    def get_action(self, events=None, state = None):
+    def get_Q_action(self, events=None, state = None):
         if state is None:
             state = self.env.state
         actions = self.legal_actions(state)
@@ -39,7 +39,7 @@ class MC_Agent:
         actions = list(zip(indices[0], indices[1]))
         return actions
     
-    def get_state_action (self, state, epoch = None):
+    def get_action (self, state, epoch = None):
         if self.train:
             r = random.random()
             epsilon = self.epsilon_greedy(epoch)
@@ -49,9 +49,10 @@ class MC_Agent:
         if r < epsilon:
             action = random.choice(self.legal_actions(state))
         else:
-            action = self.get_action(state = state)
-        next_state, reward = self.env.next_state(state, action)
-        return action, reward, next_state
+            action = self.get_Q_action(state = state)
+        # next_state, reward = self.env.next_state(state, action)
+        # return action, reward, next_state
+        return action
 
     def load_Q (self, PATH):
         self.Q = torch.load(PATH)
