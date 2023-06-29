@@ -21,7 +21,8 @@ class AI_Agent:
         else:
             return 0
 
-    def get_Q_action(self, events=None, state = None):
+    # greedy action
+    def get_Q_action(self, state = None):
         if state is None:
             state = self.env.state
         actions = self.legal_actions(state)
@@ -38,13 +39,8 @@ class AI_Agent:
                 best_action = action
                 
         return best_action
-
-    def legal_actions (self, state):
-        board = state.board
-        indices = np.where(board == 0)
-        actions = list(zip(indices[0], indices[1]))
-        return actions
     
+    # epsilon-greedy
     def get_action (self, state, epoch = None):
         if self.train:
             r = random.random()
@@ -57,6 +53,12 @@ class AI_Agent:
         else:
             action = self.get_Q_action(state = state)
         return action
+
+    def legal_actions (self, state):
+        board = state.board
+        indices = np.where(board == 0)
+        actions = list(zip(indices[0], indices[1]))
+        return actions
 
     def load_Q (self, PATH):
         self.Q = torch.load(PATH)

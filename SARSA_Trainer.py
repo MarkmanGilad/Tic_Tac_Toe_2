@@ -5,25 +5,23 @@ from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
 
 PATH = 'Data/Q_SARSA_3.pth'
-
 env = TicTacToe(State())
-player1 = AI_Agent(1, env, graphics=None, Q_table_PATH=None)
-player2 = Random_Agent(-1, env,graphics=None)
 
+player1 = AI_Agent(1, env, graphics=None, Q_table_PATH=None)
+Q = player1.Q
+get_Q = player1.get_Q
 gamma = 0.9
+alpha = 0.1
+
+player2 = Random_Agent(-1, env,graphics=None)
 
 def main ():
     player = player1    
     epochs = 100000
-    alpha = 0.1
-    Q = player1.Q
-    get_Q = player1.get_Q
-    
     
     for epoch in range(epochs):
         state = State()
         action = player1.get_action(state, epoch)   #using e-greedy
-
         while not env.end_of_game(state): 
             afterState, reward = env.next_state(state, action)
             if env.end_of_game(afterState):
@@ -70,7 +68,6 @@ def test (num):
         state.reset()
         print(n, end = "\r")    
     return x_win, o_win, tie
-
 
 def switch_players(player):
     if player == player1:
