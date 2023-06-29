@@ -4,7 +4,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
 
-PATH = 'Data/Q_SARSA_3.pth'
+PATH = 'Data/Q_SARSA_4.pth'
 env = TicTacToe(State())
 
 player1 = AI_Agent(1, env, graphics=None, Q_table_PATH=None)
@@ -41,9 +41,8 @@ def main ():
         
         print(epoch, end="\r")
     
-    player.save_Q(PATH)
+    player1.save_Q(PATH)
     print(test(100))
-
 
 def test (num):
     x_win = 0
