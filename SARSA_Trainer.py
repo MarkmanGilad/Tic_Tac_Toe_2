@@ -4,7 +4,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
 
-PATH = 'Data/Q_SARSA_4.pth'
+PATH = 'Data/Q_SARSA_5.pth'
 env = TicTacToe(State())
 
 player1 = AI_Agent(1, env, graphics=None, Q_table_PATH=None)
@@ -16,7 +16,7 @@ alpha = 0.1
 player2 = Random_Agent(-1, env,graphics=None)
 
 def main ():
-    player = player1    
+    # player = player1    
     epochs = 100000
     
     for epoch in range(epochs):
@@ -32,7 +32,6 @@ def main ():
             next_state, reward = env.next_state(afterState, afterAction)
             if env.end_of_game(next_state):
                 Q[(state, action)] =  get_Q(state, action) + alpha * (reward + gamma * 0 - get_Q(state, action))
-                # Q[(state, action)] = reward
                 break
             next_action = player1.get_action(next_state, epoch)   #using e-greedy
             Q[(state, action)] =  get_Q(state, action) + alpha * (reward + gamma * get_Q(next_state, next_action) - get_Q(state, action))

@@ -4,7 +4,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
 
-PATH = 'Data/Q_MC_1.pth'
+PATH = 'Data/Q_MC_4.pth'
 
 env = TicTacToe(State())
 player1 = AI_Agent(1, env, graphics=None, Q_table_PATH=None)
@@ -14,7 +14,7 @@ gamma = 0.9
 
 def main ():
     player = player1    
-    epochs = 100000
+    epochs = 30000
     alpha = 0.1
     
     for epoch in range(epochs):
@@ -24,10 +24,11 @@ def main ():
         for t in range(len(episode)):
             state, action, reward = episode.pop() # LIFO - Stack
             G = gamma* G + reward
-            if (state, action) in player.Q:
-                Q_value = player.Q[(state, action)]
-            else:
-                Q_value = 0
+            # if (state, action) in player.Q:
+            #     Q_value = player.Q[(state, action)]
+            # else:
+            #     Q_value = 0
+            Q_value = player.Q.get((state, action),0)
             player.Q[(state, action)] = Q_value + alpha * (G - Q_value)
         print(epoch, end="\r")
     
