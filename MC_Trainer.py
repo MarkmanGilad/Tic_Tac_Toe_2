@@ -14,7 +14,7 @@ gamma = 0.9
 
 def main ():
     player = player1    
-    epochs = 30000
+    epochs = 300000
     alpha = 0.1
     
     for epoch in range(epochs):

@@ -61,7 +61,7 @@ class AI_Agent:
         return actions
 
     def load_Q (self, PATH):
-        self.Q = torch.load(PATH)
+        self.Q = torch.load(PATH, weights_only=False)
 
     def save_Q (self, PATH):
         torch.save(self.Q, PATH)
