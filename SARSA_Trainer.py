@@ -16,29 +16,10 @@ alpha = 0.1
 player2 = Random_Agent(-1, env,graphics=None)
 
 def main ():
-    # player = player1    
-    epochs = 100000
-    
-    for epoch in range(epochs):
-        state = State()
-        action = player1.get_action(state, epoch)   #using e-greedy
-        while not env.end_of_game(state): 
-            afterState, reward = env.next_state(state, action)
-            if env.end_of_game(afterState):
-                Q[(state, action)] =  get_Q(state, action) + alpha * (reward + gamma * 0 - get_Q(state, action))
-                # Q[(state, action)] = reward
-                break
-            afterAction = player2.get_action(state=afterState)
-            next_state, reward = env.next_state(afterState, afterAction)
-            if env.end_of_game(next_state):
-                Q[(state, action)] =  get_Q(state, action) + alpha * (reward + gamma * 0 - get_Q(state, action))
-                break
-            next_action = player1.get_action(next_state, epoch)   #using e-greedy
-            Q[(state, action)] =  get_Q(state, action) + alpha * (reward + gamma * get_Q(next_state, next_action) - get_Q(state, action))
-            state = next_state
-            action = next_action
-        
-        print(epoch, end="\r")
+    '''
+    עליכם לממש את הפונקציה המאמנת את הסוכן בהתאם לאגוריתם
+    SARSA
+    '''
     
     player1.save_Q(PATH)
     print(test(100))
