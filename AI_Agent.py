@@ -66,11 +66,16 @@ class AI_Agent:
     def save_Q (self, PATH):
         torch.save(self.Q, PATH)
 
-    def epsilon_greedy (self, epoch):
+    def epsilon_greedy (self, epoch)-> float:
         start = 1.0
         final = 0.01
         decay = 10000
-        return final + (start - final)* math.exp(-1*epoch/decay)
+        
+        '''
+        עליכם לממש את הפונקציה אפסילון גרידי.
+        ניתן לממש כפונקציה לינארית או מעריכית, לבחירתכם.
+        
+        '''
 
     def __call__(self, events= None, state=None):
         return self.get_action(state)

@@ -14,45 +14,30 @@ gamma = 0.9
 
 def main ():
     player = player1    
-    epochs = 30000
-    alpha = 0.1
     
-    for epoch in range(epochs):
-        episode = Generate_episode(player, epoch)
-        G = 0
-        episode.pop()
-        for t in range(len(episode)):
-            state, action, reward = episode.pop() # LIFO - Stack
-            G = gamma* G + reward
-            # if (state, action) in player.Q:
-            #     Q_value = player.Q[(state, action)]
-            # else:
-            #     Q_value = 0
-            Q_value = player.Q.get((state, action),0)
-            player.Q[(state, action)] = Q_value + alpha * (G - Q_value)
-        print(epoch, end="\r")
-    
+    '''
+    השלימו את הקוד המאמן את הסוכן לפי אלגוריתם מנטו קרלו
+
+    חובה להשתמש בפונקציה 
+    Generate_episode
+    '''
+
+
     player.save_Q(PATH)
     print(test(100))
 
 def Generate_episode (player, epoch):
     episods = []
-    state = State()
-    while not env.end_of_game(state):
-        action = player1.get_action(state=state, epoch=epoch)
-        state_a, reward = env.next_state(state,action)
-        if env.end_of_game(state_a):
-            step = state.copy(), action, reward
-            state = state_a
-        else:
-            action_env = player2.get_action(state=state_a)
-            next_state, reward = env.next_state(state_a, action_env)
-            step = state.copy(), action, reward
-            state = next_state
-        episods.append(step)
-               
+    
+    '''
+    השלימו את הקוד היוצר רשימה של צעדים מתחילת משחק ועד לסיומו.
 
-    episods.append((state,))
+    מבנה הרשימה:
+    episods = [(state, action. reward), (state, action, reward), ...]
+
+    ניתן להשתמש בפונקציה אפסילון-גרידי מתוך הסוכן החכם, אותו עליכם לבנות.
+    '''
+
     return episods
 
 def test (num):
