@@ -6,7 +6,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
 
-PATH = 'Data/Q_MC_4.pth'
+PATH = 'Data/Q_MC_5.pth'
 
 pygame.init()
 clock = pygame.time.Clock()

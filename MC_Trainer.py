@@ -4,7 +4,7 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
 
-PATH = 'Data/Q_MC_4.pth'
+PATH = 'Data/Q_MC_5.pth'
 
 env = TicTacToe(State())
 player1 = AI_Agent(1, env, graphics=None, Q_table_PATH=None)
@@ -14,10 +14,11 @@ gamma = 0.9
 
 def main ():
     player = player1    
-    epochs = 300000
-    alpha = 0.1
+    start = 0
+    epochs = 100000
+    alpha = 0.01
     
-    for epoch in range(epochs):
+    for epoch in range(start, epochs):
         episode = Generate_episode(player, epoch)
         G = 0
         episode.pop()

@@ -27,7 +27,7 @@ class State:
             self.player = 1
 
     def __eq__(self, other) ->bool:
-        b1 = np.equal(self.board, other.board).all()
+        # b1 = np.equal(self.board, other.board).all()
         return np.equal(self.board, other.board).all()
 
     def __hash__(self) -> int:
