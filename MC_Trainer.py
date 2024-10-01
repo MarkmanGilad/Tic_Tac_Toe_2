@@ -33,7 +33,7 @@ def Generate_episode (player, epoch):
     השלימו את הקוד היוצר רשימה של צעדים מתחילת משחק ועד לסיומו.
 
     מבנה הרשימה:
-    episods = [(state, action. reward), (state, action, reward), ...]
+    episods = [(state, action, reward), (state, action, reward), ...]
 
     ניתן להשתמש בפונקציה אפסילון-גרידי מתוך הסוכן החכם, אותו עליכם לבנות.
     '''

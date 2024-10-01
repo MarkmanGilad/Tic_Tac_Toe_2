@@ -30,10 +30,11 @@ class AI_Agent:
         best_action = None
         for action in actions:
             key = (state, action)
-            if key in self.Q:
-                Q_value = self.Q[(state, action)]
-            else:
-                Q_value = 0
+            Q_value = self.Q.get((state, action),0)
+            # if key in self.Q:
+            #     Q_value = self.Q[(state, action)]
+            # else:
+            #     Q_value = 0
             if Q_value > best_value:
                 best_value = Q_value
                 best_action = action
