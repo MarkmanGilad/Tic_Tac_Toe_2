@@ -69,7 +69,7 @@ class AI_Agent:
     def epsilon_greedy (self, epoch):
         start = 1.0
         final = 0.01
-        decay = 75000
+        decay = 5000
         # return final + (start - final)* math.exp(-1*epoch/decay)
         if epoch > decay:
             return final
