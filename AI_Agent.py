@@ -31,10 +31,6 @@ class AI_Agent:
         for action in actions:
             key = (state, action)
             Q_value = self.Q.get((state, action),0)
-            # if key in self.Q:
-            #     Q_value = self.Q[(state, action)]
-            # else:
-            #     Q_value = 0
             if Q_value > best_value:
                 best_value = Q_value
                 best_action = action
@@ -70,7 +66,7 @@ class AI_Agent:
     def epsilon_greedy (self, epoch)-> float:
         start = 1.0
         final = 0.01
-        decay = 10000
+        decay = 100
         
         '''
         עליכם לממש את הפונקציה אפסילון גרידי.
