@@ -14,7 +14,7 @@ The `main` branch is intentionally incomplete. It is meant for practice, so key 
 
 | What this repo gives you | Preview |
 | --- | --- |
-| Playable Tic-Tac-Toe in `pygame`; a small RL practice environment; Monte Carlo and SARSA tutorial scaffolding; and separate answer branches with completed implementations. | ![Gameplay preview](img/screen.png) |
+| • Playable Tic-Tac-Toe built with `pygame`.<br>• A small, readable environment for RL practice.<br>• Tutorial scaffolding for Monte Carlo and SARSA.<br>• Separate answer branches with completed implementations. | ![Gameplay preview](img/screen_preview.png) |
 
 ## Table of Contents
 
