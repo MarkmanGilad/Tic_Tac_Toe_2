@@ -31,7 +31,7 @@ class State:
         return np.equal(self.board, other.board).all()
 
     def __hash__(self) -> int:
-        return hash(repr(self.board))
+        return hash(tuple(self.board.astype(np.int8).ravel()))
     
     def copy (self):
         newBoard = np.copy(self.board)

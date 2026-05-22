@@ -27,11 +27,7 @@ def main ():
         for t in range(len(episode)):
             state, action, reward = episode.pop() # LIFO - Stack
             G = gamma* G + reward
-            # if (state, action) in player.Q:
-            #     Q_value = player.Q[(state, action)]
-            # else:
-            #     Q_value = 0
-            Q_value = player.Q.get((state, action),0)
+            Q_value = player.Q.get((state, action),0) # if no key return 0
             player.Q[(state, action)] = Q_value + alpha * (G - Q_value)
         print(epoch, end="\r")
     

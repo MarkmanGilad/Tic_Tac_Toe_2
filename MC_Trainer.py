@@ -4,18 +4,18 @@ from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
 
-PATH = 'Data/Q_MCO_2.pth'
+PATH = 'Data/Q_MC_2026.pth'
 
 env = TicTacToe(State())
-player2 = AI_Agent(-1, env, graphics=None, Q_table_PATH=None)
-player1 = Random_Agent(1, env,graphics=None)
+player1 = AI_Agent(1, env, graphics=None, Q_table_PATH=None)
+player2 = Random_Agent(-1, env,graphics=None)
 
-gamma = 0.9
+gamma = 0.95
 
 def main ():
-    player = player2    
+    player = player1    
     start = 0
-    epochs = 100000
+    epochs = 200000
     alpha = 0.01
     
     for epoch in range(start, epochs):
@@ -25,11 +25,7 @@ def main ():
         for t in range(len(episode)):
             state, action, reward = episode.pop() # LIFO - Stack
             G = gamma* G + reward
-            # if (state, action) in player.Q:
-            #     Q_value = player.Q[(state, action)]
-            # else:
-            #     Q_value = 0
-            Q_value = player.Q.get((state, action),0)
+            Q_value = player.Q.get((state, action),0) # if no key return 0
             player.Q[(state, action)] = Q_value + alpha * (G - Q_value)
         print(epoch, end="\r")
     
@@ -39,16 +35,14 @@ def main ():
 def Generate_episode (player, epoch):
     episods = []
     state = State()
-    action = player1.get_action(state=state)
-    state, _ = env.next_state(state, action)
     while not env.end_of_game(state):
-        action = player2.get_action(state=state, epoch=epoch)
+        action = player1.get_action(state=state, epoch=epoch)
         state_a, reward = env.next_state(state,action)
         if env.end_of_game(state_a):
             step = state.copy(), action, reward
             state = state_a
         else:
-            action_env = player1.get_action(state=state_a)
+            action_env = player2.get_action(state=state_a)
             next_state, reward = env.next_state(state_a, action_env)
             step = state.copy(), action, reward
             state = next_state
@@ -62,7 +56,7 @@ def test (num):
     x_win = 0
     o_win = 0
     tie = 0
-    player = player2
+    player = player1
     player.train=False
     player.load_Q(PATH)
     for n in range(num):
