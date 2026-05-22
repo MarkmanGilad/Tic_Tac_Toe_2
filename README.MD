@@ -29,7 +29,7 @@ The `main` branch is intentionally incomplete. It is meant for practice, so key 
 9. [📚 Tutorial Note](#tutorial-note)
 10. [🌿 Answer Branches](#answer-branches)
 
-## 🎯 Project Overview
+## Project Overview
 
 The project combines three pieces:
 
@@ -43,7 +43,7 @@ You can use this project to:
 - Study states, actions, rewards, and episode generation in a small environment.
 - Practice implementing reinforcement learning on a problem that is easy to inspect and debug.
 
-## 🧠 Learning Goals
+## Learning Goals
 
 This repository is useful for learning or teaching:
 
@@ -53,14 +53,14 @@ This repository is useful for learning or teaching:
 - How Monte Carlo and SARSA training loops are structured.
 - How to connect a trained agent to a playable graphical game.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - Python
 - `pygame` for the UI
 - `numpy` for board/state operations
 - `torch` for saving and loading Q-tables
 
-## 📁 Project Structure
+## Project Structure
 
 - `Game.py` - playable game loop.
 - `TicTacToe.py` - environment logic, legal moves, state transitions, and terminal checks.
@@ -75,7 +75,7 @@ This repository is useful for learning or teaching:
 - `Data/` - saved Q-table checkpoints.
 - `img/` - images used by the UI.
 
-## 🎮 How the Project Works
+## How the Project Works
 
 The game uses a 3x3 board where:
 
@@ -96,7 +96,7 @@ The AI agent stores action values in a Q-table keyed by `(state, action)` and ca
 - Explore with epsilon-greedy action selection during training.
 - Load previously saved Q-tables from the `Data/` folder.
 
-## 🚀 Getting Started
+## Getting Started
 
 Install the dependencies:
 
@@ -104,7 +104,7 @@ Install the dependencies:
 pip install pygame numpy torch
 ```
 
-## ▶️ Running the Project
+## Running the Project
 
 Run the game:
 
@@ -125,14 +125,14 @@ Run the evaluation script:
 python Tester.py
 ```
 
-## ✨ Why This Repo Is Useful
+## Why This Repo Is Useful
 
 - Small enough to understand quickly, but rich enough to demonstrate real RL ideas.
 - Useful for tutorials, homework, workshops, or self-study.
 - Lets you move from environment design to training to a playable UI in one repository.
 - Includes separate answer branches so learners can compare their work against completed implementations.
 
-## 📚 Tutorial Note
+## Tutorial Note
 
 The `main` branch does not include the full answers.
 
@@ -144,7 +144,7 @@ It is intentionally left incomplete for tutorial use. Missing pieces include cor
 
 That makes `main` a practice branch for classroom work, guided exercises, or self-study.
 
-## 🌿 Answer Branches
+## Answer Branches
 
 The completed solutions are provided in separate branches.
 
@@ -175,17 +175,3 @@ It includes:
 
 Use this branch if you want to study the SARSA answer directly without the broader set of tutorial solutions.
 
-## 🔎 Suggested GitHub Topics
-
-If you want the repository to be easier to discover on GitHub, add these topics in the GitHub repository settings:
-
-- `tic-tac-toe`
-- `python`
-- `pygame`
-- `reinforcement-learning`
-- `sarsa`
-- `monte-carlo`
-- `q-learning`
-- `machine-learning`
-- `tutorial`
-- `game-ai`
