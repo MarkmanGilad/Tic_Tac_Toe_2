@@ -13,8 +13,8 @@ The `main` branch is intentionally incomplete. It is meant for practice, so key 
 **Keywords:** Tic-Tac-Toe, Reinforcement Learning, Python, Pygame, Monte Carlo, SARSA, Q-table, AI agent, tutorial, game development, machine learning, RL practice project
 
 | What this repo gives you | Preview |
-| --- | ---: |
-| A playable Tic-Tac-Toe game built with `pygame`.<br>A small, readable environment for RL practice.<br>Tutorial scaffolding for Monte Carlo and SARSA.<br>Separate answer branches with completed implementations. | <div align="right"><img src="img/screen.png" alt="Gameplay preview" width="160" /></div> |
+| --- | --- |
+| Playable Tic-Tac-Toe in `pygame`; a small RL practice environment; Monte Carlo and SARSA tutorial scaffolding; and separate answer branches with completed implementations. | ![Gameplay preview](img/screen.png) |
 
 ## Table of Contents
 
