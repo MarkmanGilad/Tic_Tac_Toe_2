@@ -5,8 +5,9 @@ from State import State
 from Human_Agent import Human_Agent
 from Random_Agent import Random_Agent
 from AI_Agent import AI_Agent
+from Random_Agent_Advanced import Random_Agent_Advanced
 
-PATH = 'Data/Q_MC_2026.pth'
+PATH = 'Data/Q_MC_2026_2.pth'
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -17,6 +18,7 @@ player1 = AI_Agent(1, env, graphics, Q_table_PATH=PATH, train=False)
 # player1 = Random_Agent(1, env, graphics)
 # player2 = Random_Agent(-1, env,graphics)
 player2 = Human_Agent(-1,env, graphics)
+# player2 = Random_Agent_Advanced(-1, env=env, graphics=None)
 
 def main ():
     player = player1

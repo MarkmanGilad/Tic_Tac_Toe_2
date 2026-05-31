@@ -16,11 +16,12 @@ class AI_Agent:
         self.train = train
 
     def get_Q (self, state, action):
-        if (state, action) in self.Q:
-            return self.Q[(state, action)]
-        else:
-            return 0
-
+        # if (state, action) in self.Q:
+        #     return self.Q[(state, action)]
+        # else:
+        #     return 0
+        return self.Q.get((state, action), 0)
+        
     # greedy action
     def get_Q_action(self, state = None):
         if state is None:
@@ -29,11 +30,12 @@ class AI_Agent:
         best_value = -10
         best_action = None
         for action in actions:
-            key = (state, action)
-            if key in self.Q:
-                Q_value = self.Q[(state, action)]
-            else:
-                Q_value = 0
+            Q_value = self.get_Q(state, action)
+            # key = (state, action)
+            # if key in self.Q:
+            #     Q_value = self.Q[(state, action)]
+            # else:
+            #     Q_value = 0
             if Q_value > best_value:
                 best_value = Q_value
                 best_action = action
